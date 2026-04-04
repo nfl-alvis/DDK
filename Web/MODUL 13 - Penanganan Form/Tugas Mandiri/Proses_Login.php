@@ -9,7 +9,7 @@ if (isset($_POST['login'])) {
 
 if ($user == "alvis" && $pass == "123") {
     $_SESSION['username'] = $user;
-    header("Location: Form_Ekskul.php");
+    header("Location: Form_Ekskul.html");
     exit();
 } else {
     header("Location: login.php?error=1");
