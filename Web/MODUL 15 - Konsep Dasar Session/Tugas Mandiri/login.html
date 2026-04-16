@@ -1,0 +1,28 @@
+<?php
+session_start();
+
+if (isset($_SESSION['username'])) {
+    header("Location: Form_Ekskul.html");
+    exit();
+}
+
+$error = isset($_GET['error']) ? $_GET['error'] : "";
+?>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login ~ Pendaftaran Ekstrakurikuler</title>
+  </head>
+  <body>
+    <form action="Proses_Login.php" method="post">
+      <?php if ($error === "1") : ?>
+      <p style="color: red">Username atau password salah.</p>
+      <?php endif; ?>
+      Username : <input type="text" name="username" id="username" /> <br />
+      Password : <input type="password" name="password" id="password" /> <br />
+      <input type="submit" value="Login" name="login" />
+    </form>
+  </body>
+</html>
