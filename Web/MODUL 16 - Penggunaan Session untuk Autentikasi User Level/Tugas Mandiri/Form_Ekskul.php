@@ -3,218 +3,152 @@ require_once "auth.php";
 require_level("admin");
 ?>
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Form Pendaftaran Ekskul</title>
+<html lang="id">
 
-    <style>
-      * {
-        font-family: "Times New Roman", Times, serif;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Form Pendaftaran Ekskul</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/app.css" />
+</head>
 
-      body {
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: #f5f5f5;
-      }
-
-      form {
-        width: 420px;
-        border: 1px solid #ccc;
-        padding: 20px;
-        border-radius: 10px;
-        background-color: white;
-      }
-
-      h2 {
-        color: #9b6dff;
-        text-align: center;
-      }
-
-      table {
-        width: 100%;
-        border-spacing: 10px;
-      }
-
-      input[type="text"],
-      input[type="date"],
-      select,
-      textarea {
-        width: 100%;
-        padding: 5px;
-        box-sizing: border-box;
-      }
-
-      .radio-group {
-        display: flex;
-        gap: 15px;
-        align-items: center;
-      }
-
-      .radio-group label {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-      }
-
-      .note {
-        margin-top: 10px;
-        font-size: 14px;
-      }
-
-      .note span {
-        color: red;
-      }
-
-      .btn-submit {
-        margin-top: 15px;
-        width: 100%;
-        padding: 8px;
-        background-color: #9b6dff;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-
-      .btn-submit:hover {
-        background-color: #7a4de0;
-      }
-
-      .top-bar {
-        width: 420px;
-        margin: 0 auto 15px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .logout-link {
-        color: #7a4de0;
-        text-decoration: none;
-        font-weight: bold;
-      }
-    </style>
-  </head>
-
-  <body>
-    <div>
-      <div class="top-bar">
-        <span>Login sebagai: <?php echo htmlspecialchars($_SESSION['username']); ?> (admin)</span>
-        <a href="logout.php" class="logout-link">Logout</a>
+<body>
+  <div class="page-shell">
+    <div class="container">
+      <div class="hero-card page-card mb-4">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-8">
+            <span class="brand-mark">Panel Admin</span>
+            <h1 class="display-6 fw-bold mt-4 mb-3">Tambah data siswa untuk pendaftaran ekstrakurikuler.</h1>
+            <p class="section-intro mb-4">
+              Isi data siswa secara lengkap
+            </p>
+            <div class="meta-list">
+              <span class="meta-pill">Login: <?php echo htmlspecialchars($_SESSION['username']); ?></span>
+              <span class="meta-pill">Role: admin</span>
+              <span class="meta-pill">Input Terstruktur</span>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="d-flex flex-wrap gap-2 justify-content-lg-end hero-actions">
+              <a href="edit_siswa.php" class="btn btn-light">Kembali ke Data</a>
+              <a href="logout.php" class="btn btn-outline-light">Logout</a>
+            </div>
+          </div>
+        </div>
       </div>
-      <p><a href="edit_siswa.php">Kembali ke data siswa</a></p>
-      <form method="post" action="simpan_siswa.php">
-      <h2>Form Pendaftaran Ekskul</h2>
-      <hr />
 
-      <table>
-        <tr>
-          <td>NIS</td>
-          <td>:</td>
-          <td><input type="text" name="nis" required /></td>
-        </tr>
+      <div class="glass-card page-card">
+        <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3 mb-4">
+          <div>
+            <h2 class="h3 fw-bold mb-1">Form Pendaftaran Ekskul</h2>
+            <p class="small-muted mb-0">Semua field penting sudah disusun agar lebih cepat diisi.</p>
+          </div>
+          <span class="status-badge">* Wajib diisi</span>
+        </div>
 
-        <tr>
-          <td>Nama</td>
-          <td>:</td>
-          <td><input type="text" name="nama" required /></td>
-        </tr>
+        <form method="post" action="simpan_siswa.php" class="row g-4">
+          <div class="col-md-6">
+            <label for="nis" class="form-label">NIS</label>
+            <input type="text" name="nis" id="nis" class="form-control" required />
+          </div>
 
-        <tr>
-          <td>Kelas</td>
-          <td>:</td>
-          <td>
-            <select name="kelas" required>
+          <div class="col-md-6">
+            <label for="nama" class="form-label">Nama Siswa</label>
+            <input type="text" name="nama" id="nama" class="form-control" required />
+          </div>
+
+          <div class="col-md-6">
+            <label for="kelas" class="form-label">Kelas</label>
+            <select name="kelas" id="kelas" class="form-select" required>
               <option value="X">X</option>
               <option value="XI">XI</option>
               <option value="XII">XII</option>
             </select>
-          </td>
-        </tr>
+          </div>
 
-        <tr>
-          <td>Tgl Lahir</td>
-          <td>:</td>
-          <td><input type="date" name="tgl_lahir" required /></td>
-        </tr>
+          <div class="col-md-6">
+            <label for="tgl_lahir" class="form-label">Tanggal Lahir</label>
+            <input type="date" name="tgl_lahir" id="tgl_lahir" class="form-control" required />
+          </div>
 
-        <tr>
-          <td>Alamat</td>
-          <td>:</td>
-          <td><textarea name="alamat" required></textarea></td>
-        </tr>
+          <div class="col-12">
+            <label for="alamat" class="form-label">Alamat</label>
+            <textarea name="alamat" id="alamat" class="form-control" required></textarea>
+          </div>
 
-        <tr>
-          <td>Kota</td>
-          <td>:</td>
-          <td><input type="text" name="kota" required /></td>
-        </tr>
+          <div class="col-md-6">
+            <label for="kota" class="form-label">Kota</label>
+            <input type="text" name="kota" id="kota" class="form-control" required />
+          </div>
 
-        <tr>
-          <td>Jenis Kelamin</td>
-          <td>:</td>
-          <td>
-            <div class="radio-group">
-              <label>
-                <input
-                  type="radio"
-                  name="jenis_kelamin"
-                  value="Laki-laki"
-                  required
-                />
-                Laki-laki
+          <div class="col-md-6">
+            <label class="form-label d-block">Jenis Kelamin</label>
+            <div class="checkbox-grid">
+              <label class="choice-card">
+                <input type="radio" name="jenis_kelamin" value="Laki-laki" class="form-check-input" required />
+                <div>
+                  <span class="fw-semibold d-block">Laki-laki</span>
+                  <small class="text-secondary">Pilih untuk siswa laki-laki</small>
+                </div>
               </label>
-              <label>
-                <input
-                  type="radio"
-                  name="jenis_kelamin"
-                  value="Perempuan"
-                  required
-                />
-                Perempuan
+              <label class="choice-card">
+                <input type="radio" name="jenis_kelamin" value="Perempuan" class="form-check-input" required />
+                <div>
+                  <span class="fw-semibold d-block">Perempuan</span>
+                  <small class="text-secondary">Pilih untuk siswa perempuan</small>
+                </div>
               </label>
             </div>
-          </td>
-        </tr>
+          </div>
 
-        <tr>
-          <td>Hobby</td>
-          <td>:</td>
-          <td>
-            <input type="checkbox" name="hobby[]" value="Membaca" id="h1" />
-            <label for="h1">Membaca</label><br />
+          <div class="col-12">
+            <label class="form-label d-block">Hobi</label>
+            <div class="checkbox-grid">
+              <label class="choice-card">
+                <input type="checkbox" name="hobby[]" value="Membaca" id="h1" class="form-check-input" />
+                <div>
+                  <span class="fw-semibold d-block">Membaca</span>
+                  <small class="text-secondary">Minat literasi dan bacaan</small>
+                </div>
+              </label>
+              <label class="choice-card">
+                <input type="checkbox" name="hobby[]" value="Olahraga" id="h2" class="form-check-input" />
+                <div>
+                  <span class="fw-semibold d-block">Olahraga</span>
+                  <small class="text-secondary">Aktivitas fisik dan kebugaran</small>
+                </div>
+              </label>
+              <label class="choice-card">
+                <input type="checkbox" name="hobby[]" value="Musik" id="h3" class="form-check-input" />
+                <div>
+                  <span class="fw-semibold d-block">Musik</span>
+                  <small class="text-secondary">Minat seni dan instrumen</small>
+                </div>
+              </label>
+            </div>
+          </div>
 
-            <input type="checkbox" name="hobby[]" value="Olahraga" id="h2" />
-            <label for="h2">Olahraga</label><br />
-
-            <input type="checkbox" name="hobby[]" value="Musik" id="h3" />
-            <label for="h3">Musik</label>
-          </td>
-        </tr>
-
-        <tr>
-          <td>Pilihan Ekskul</td>
-          <td>:</td>
-          <td>
-            <select name="ekskul[]" multiple required>
+          <div class="col-12">
+            <label for="ekskul" class="form-label">Pilihan Ekskul</label>
+            <select name="ekskul[]" id="ekskul" class="form-select multi-select" multiple required>
               <option value="Paskibra">Paskibra</option>
               <option value="PMR">PMR</option>
               <option value="Pramuka">Pramuka</option>
             </select>
-          </td>
-        </tr>
-      </table>
+            <div class="table-note mt-2">Gunakan tombol `Ctrl` atau `Cmd` untuk memilih lebih dari satu ekskul.</div>
+          </div>
 
-      <div class="note"><span>*</span> Harus di isi</div>
-
-      <button type="submit" class="btn-submit">Daftar</button>
-      </form>
+          <div class="col-12 d-flex flex-column flex-sm-row justify-content-end gap-2 pt-2">
+            <a href="edit_siswa.php" class="btn btn-outline-secondary btn-ghost">Batal</a>
+            <button type="reset" class="btn btn-outline-secondary btn-ghost">Reset</button>
+            <button type="submit" class="btn btn-brand">Simpan Data</button>
+          </div>
+        </form>
+      </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>

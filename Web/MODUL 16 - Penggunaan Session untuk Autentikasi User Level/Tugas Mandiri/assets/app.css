@@ -1,0 +1,350 @@
+:root {
+  --app-brand: #0f766e;
+  --app-brand-dark: #115e59;
+  --app-accent: #f59e0b;
+  --app-ink: #0f172a;
+  --app-muted: #64748b;
+  --app-line: rgba(15, 23, 42, 0.09);
+  --app-surface: rgba(255, 255, 255, 0.92);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Segoe UI", sans-serif;
+  color: var(--app-ink);
+  background:
+    radial-gradient(circle at top left, rgba(20, 184, 166, 0.18), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(245, 158, 11, 0.18), transparent 24%),
+    linear-gradient(135deg, #f8fafc 0%, #ecfeff 45%, #fff7ed 100%);
+}
+
+a {
+  text-decoration: none;
+}
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.auth-card,
+.glass-card,
+.hero-card {
+  border: 0;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.12);
+}
+
+.auth-card {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(10px);
+}
+
+.auth-hero {
+  position: relative;
+  height: 100%;
+  padding: 3rem;
+  background: linear-gradient(160deg, #0f766e 0%, #115e59 52%, #164e63 100%);
+  color: #fff;
+}
+
+.auth-hero::after,
+.hero-card::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.auth-hero::after {
+  width: 220px;
+  height: 220px;
+  right: -70px;
+  bottom: -80px;
+}
+
+.hero-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(15, 118, 110, 0.98), rgba(15, 23, 42, 0.92));
+  color: #fff;
+}
+
+.hero-card::after {
+  width: 320px;
+  height: 320px;
+  right: -110px;
+  top: -90px;
+}
+
+.page-card {
+  padding: 1.75rem;
+}
+
+.glass-card {
+  background: var(--app-surface);
+  backdrop-filter: blur(10px);
+}
+
+.form-panel {
+  padding: 2.75rem;
+}
+
+.auth-title {
+  font-size: clamp(1.8rem, 2vw + 1rem, 2.4rem);
+  font-weight: 800;
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.section-intro {
+  max-width: 34rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1.03rem;
+}
+
+.meta-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.meta-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.page-shell {
+  padding: 2.25rem 0 3rem;
+}
+
+.small-muted {
+  color: var(--app-muted);
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  background: #ecfeff;
+  color: var(--app-brand-dark);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.form-label {
+  margin-bottom: 0.45rem;
+  color: #334155;
+  font-weight: 700;
+}
+
+.form-control,
+.form-select {
+  padding: 0.78rem 0.95rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: rgba(15, 118, 110, 0.55);
+  box-shadow: 0 0 0 0.25rem rgba(15, 118, 110, 0.12);
+}
+
+textarea.form-control {
+  min-height: 120px;
+}
+
+.form-check-input:checked {
+  background-color: var(--app-brand);
+  border-color: var(--app-brand);
+}
+
+.choice-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border: 1px solid #dbe4f0;
+  border-radius: 18px;
+  background: #f8fafc;
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+.choice-card:hover {
+  transform: translateY(-1px);
+  border-color: #14b8a6;
+  background: #fff;
+}
+
+.choice-card .form-check-input {
+  margin: 0;
+  flex: 0 0 auto;
+}
+
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.9rem;
+}
+
+.multi-select {
+  min-height: 160px;
+}
+
+.btn-brand {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #0f766e;
+  --bs-btn-border-color: #0f766e;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #115e59;
+  --bs-btn-hover-border-color: #115e59;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #134e4a;
+  --bs-btn-active-border-color: #134e4a;
+  --bs-btn-focus-shadow-rgb: 15, 118, 110;
+  padding: 0.78rem 1.25rem;
+  border-radius: 16px;
+  font-weight: 700;
+}
+
+.btn-ghost {
+  padding: 0.78rem 1.25rem;
+  border-radius: 16px;
+  font-weight: 700;
+}
+
+.hero-actions .btn {
+  padding: 0.8rem 1.2rem;
+  border-radius: 16px;
+  font-weight: 700;
+}
+
+.soft-panel {
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--app-line);
+  border-radius: 22px;
+  background: rgba(248, 250, 252, 0.82);
+}
+
+.table-responsive {
+  border-radius: 22px;
+}
+
+.table {
+  --bs-table-bg: transparent;
+}
+
+.table thead th {
+  white-space: nowrap;
+  background: #ecfeff;
+  color: #0f172a;
+  font-size: 0.84rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid #cfe6e8;
+}
+
+.table tbody td {
+  vertical-align: top;
+  border-color: #e2e8f0;
+}
+
+.table tbody tr:hover {
+  background: rgba(15, 118, 110, 0.045);
+}
+
+.table-actions {
+  min-width: 140px;
+}
+
+.table-note {
+  color: var(--app-muted);
+  font-size: 0.92rem;
+}
+
+.empty-state {
+  padding: 2rem 1.25rem;
+  border: 1px dashed #cbd5e1;
+  border-radius: 22px;
+  text-align: center;
+  color: var(--app-muted);
+  background: rgba(248, 250, 252, 0.8);
+}
+
+.info-card {
+  border-radius: 22px;
+}
+
+.auth-links a,
+.inline-link {
+  color: var(--app-brand);
+  font-weight: 700;
+}
+
+.auth-links a:hover,
+.inline-link:hover {
+  color: var(--app-brand-dark);
+}
+
+@media (max-width: 991.98px) {
+  .auth-hero {
+    padding: 2.25rem;
+  }
+
+  .form-panel {
+    padding: 2rem;
+  }
+
+  .page-shell {
+    padding-top: 1.5rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .auth-page {
+    padding: 1rem 0;
+  }
+
+  .auth-hero,
+  .form-panel,
+  .page-card {
+    padding: 1.35rem;
+  }
+
+  .meta-list {
+    gap: 0.5rem;
+  }
+
+  .meta-pill {
+    font-size: 0.82rem;
+  }
+}
