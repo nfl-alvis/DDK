@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (isset($_SESSION['user_id'])) {
+    header("Location: tampil.php");
+    exit;
+}
+$error = $_GET['error'] ?? '';
+?>
 <!DOCTYPE html>
 <html lang="id">
 
@@ -336,15 +344,6 @@
 </head>
 
 <body>
-
-    <?php
-    session_start();
-    if (isset($_SESSION['user_id'])) {
-        header("Location: tampil.php");
-        exit;
-    }
-    $error = $_GET['error'] ?? '';
-    ?>
 
     <!-- Left decorative panel -->
     <div class="left-panel">
